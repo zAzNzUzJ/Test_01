@@ -1,6 +1,8 @@
-FROM ubuntu/apache2  
-WORKDIR /var/www/html
-RUN rm index.html
-RUN echo "Test Page for DAC" > index.html
-EXPOSE 80
-CMD ["apache2ctl", "-D","FOREGROUND"]
+# NOTE name need to be Dockerfile
+FROM python:3.9
+
+RUN pip install mysql-connector-python
+
+WORKDIR /usr/app/src
+
+COPY ./hello_world.py ./
